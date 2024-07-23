@@ -15,7 +15,8 @@ public class StockReservedEventConsumer : IConsumer<StockReservedEvent>
     public Task Consume(ConsumeContext<StockReservedEvent> context)
     {
         Random random = new();
-        int number = random.Next(0, 20);
+        int number = random.Next(1, 21);
+
         if (number % 2 == 0)
         {
             PaymentCompletedEvent paymentCompletedEvent = new()
