@@ -13,8 +13,10 @@ public class StockReservedEventConsumer : IConsumer<StockReservedEvent>
     }
 
     public Task Consume(ConsumeContext<StockReservedEvent> context)
-    {   
-        if (true)
+    {
+        Random random = new();
+        int number = random.Next(0, 20);
+        if (number % 2 == 0)
         {
             PaymentCompletedEvent paymentCompletedEvent = new()
             {
@@ -25,7 +27,7 @@ public class StockReservedEventConsumer : IConsumer<StockReservedEvent>
             Console.WriteLine("Ödeme başarılı...");
         }
         else
-        {.
+        {
             PaymentFailedEvent paymentFailedEvent = new()
             {
                 OrderId = context.Message.OrderId,
